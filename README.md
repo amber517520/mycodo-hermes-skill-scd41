@@ -60,6 +60,6 @@ API key 由遮罩 `getpass` 輸入，或由執行環境的 `MYCODO_API_KEY` 讀�
 - `THIRD_PARTY/NOTICE.md`、`THIRD_PARTY/upstream-LICENSE`：上游來源、commit、MIT 授權。
 - `docs/TDD-record.md`：逐一 RED→GREEN 的實際執行紀錄。
 
-安全範圍是「無致動能力」，不是完備的實體控制安全證明。尚無現場憑證整合、可靠 water interlock、Pi 本地 cutoff／Functions、持久化冷卻、並行鎖與時限 API 驗證。未安裝排程、未發布 GitHub。JSONL 只保存 UTC 時間、狀態、計畫數、執行數與錯誤存在旗標，不保存原始錯誤字串或資料。
+安全範圍是「無致動能力」，不是完備的實體控制安全證明。尚無現場憑證整合、可靠 water interlock、Pi 本地 cutoff／Functions、持久化冷卻、並行鎖與時限 API 驗證。未安裝排程；GitHub 保存程式碼不等於已部署到 Hermes 或樹莓派。JSONL 只保存 UTC 時間、狀態、計畫數、執行數與錯誤存在旗標，不保存原始錯誤字串或資料。
 
 安全回歸測試共 24 項：包含未知命令列參數不回顯、極大整數讀值拒絕，以及 API 布林輸出狀態的正確保存。仍不得在命令列輸入 API key。Audit 尚未細分錯誤代碼；現場整合與真實控制仍未啟用。
