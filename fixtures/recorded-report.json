@@ -1,0 +1,11 @@
+{
+  "source_note": "Curated original GET responses from operator-provided mycodo_readonly_report_stage2.json; historical NOT current Pi data. Original timestamps unchanged. Inventories and local host omitted.",
+  "time_utc": "2026-10-14T06:10:22.101124+00:00",
+  "requests": [
+    {"path": "/api/measurements/last/e0fe890e-dce7-4b14-9395-5b7815423e51/ppm/0/600", "http_status": 200, "data": {"time": 1791958164.581343, "value": 991.0}},
+    {"path": "/api/measurements/last/e0fe890e-dce7-4b14-9395-5b7815423e51/C/1/600", "http_status": 200, "data": {"time": 1791958164.581343, "value": 26.945571899414062}},
+    {"path": "/api/measurements/last/e0fe890e-dce7-4b14-9395-5b7815423e51/percent/2/600", "http_status": 200, "data": {"time": 1791958164.581343, "value": 63.00201416015625}},
+    {"path": "/api/measurements/last/e0fe890e-dce7-4b14-9395-5b7815423e51/C/3/600", "http_status": 200, "data": {"time": 1791958164.581343, "value": 19.302140678277873}},
+    {"path": "/api/measurements/last/e0fe890e-dce7-4b14-9395-5b7815423e51/Pa/4/600", "http_status": 200, "data": {"time": 1791958164.581343, "value": 1314.6005223856966}}
+  ]
+}

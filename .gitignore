@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+*creds*
+*credentials*
+*.pem
+*.key
+runtime/
+local/
+*.local.json
+*.local.md

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "mode": "dry-run",
+  "box": "A",
+  "input_uuid": "e0fe890e-dce7-4b14-9395-5b7815423e51",
+  "channels": {"co2": [0, "ppm"], "temperature": [1, "C"], "humidity": [2, "percent"], "dewpoint": [3, "C"], "vpd": [4, "Pa"]},
+  "outputs": {
+    "humidifier": {"uuid": "bf9acc8f-76e6-4d3e-8f24-1f9a38512d24", "pin": 5, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"},
+    "fan": {"uuid": "1a58c7c4-481a-408c-b1bc-d88f6ba75b10", "pin": 16, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"}
+  },
+  "species": "袖珍菇／秀珍菇（供應商待確認）",
+  "species_confirmed": false,
+  "approved": false,
+  "provenance": null,
+  "water_available": null,
+  "thresholds": {"temperature_min": null, "temperature_max": null, "humidity_min": null, "humidity_max": null, "co2_max": null},
+  "limits": {"humidifier_max_seconds": null, "fan_max_seconds": null, "cooldown_seconds": null, "stale_seconds": null}
+}

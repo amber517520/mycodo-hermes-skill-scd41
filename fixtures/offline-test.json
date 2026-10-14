@@ -1,0 +1,25 @@
+{
+  "label": "OFFLINE TEST ONLY NOT CURRENT PI DATA",
+  "config": {
+    "schema": 1, "mode": "dry-run", "box": "A",
+    "input_uuid": "e0fe890e-dce7-4b14-9395-5b7815423e51",
+    "channels": {"co2": [0, "ppm"], "temperature": [1, "C"], "humidity": [2, "percent"], "dewpoint": [3, "C"], "vpd": [4, "Pa"]},
+    "outputs": {
+      "humidifier": {"uuid": "bf9acc8f-76e6-4d3e-8f24-1f9a38512d24", "pin": 5, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"},
+      "fan": {"uuid": "1a58c7c4-481a-408c-b1bc-d88f6ba75b10", "pin": 16, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"}
+    },
+    "species": "SYNTHETIC TEST ONLY", "species_confirmed": true,
+    "approved": true, "provenance": "OFFLINE TEST ONLY", "water_available": true,
+    "thresholds": {"temperature_min": 10, "temperature_max": 30, "humidity_min": 70, "humidity_max": 90, "co2_max": 1000},
+    "limits": {"humidifier_max_seconds": 2, "fan_max_seconds": 3, "cooldown_seconds": 10, "stale_seconds": 20}
+  },
+  "now": 110,
+  "last_humidifier_time": 90,
+  "readings": {
+    "co2": {"time": 100, "value": 1500},
+    "temperature": {"time": 100, "value": 20},
+    "humidity": {"time": 100, "value": 60},
+    "dewpoint": {"time": 100, "value": 12},
+    "vpd": {"time": 100, "value": 800}
+  }
+}
