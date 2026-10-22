@@ -8,7 +8,7 @@
     "humidifier": {"uuid": "bf9acc8f-76e6-4d3e-8f24-1f9a38512d24", "pin": 5, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"},
     "fan": {"uuid": "1a58c7c4-481a-408c-b1bc-d88f6ba75b10", "pin": 16, "channel": 0, "type": "output_on_off_pinctrl", "active_high": true, "startup": "off", "shutdown": "off"}
   },
-  "species": "袖珍菇／秀珍菇（供應商待確認）",
+  "species": "秀珍菇（研究名稱已確認；參數來源待核准）",
   "species_confirmed": false,
   "approved": false,
   "provenance": null,

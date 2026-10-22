@@ -12,7 +12,7 @@ OUTPUTS = {
 def default_config():
     return {'schema': 1, 'mode': 'dry-run', 'box': 'A', 'input_uuid': INPUT,
             'channels': copy.deepcopy(CHANNELS), 'outputs': copy.deepcopy(OUTPUTS),
-            'species': '袖珍菇／秀珍菇（供應商待確認）', 'species_confirmed': False,
+            'species': '秀珍菇（研究名稱已確認；參數來源待核准）', 'species_confirmed': False,
             'approved': False, 'provenance': None, 'water_available': None,
             'thresholds': dict.fromkeys(['temperature_min', 'temperature_max', 'humidity_min', 'humidity_max', 'co2_max']),
             'limits': dict.fromkeys(['humidifier_max_seconds', 'fan_max_seconds', 'cooldown_seconds', 'stale_seconds'])}

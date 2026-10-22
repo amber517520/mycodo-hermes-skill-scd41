@@ -28,13 +28,13 @@
 
 初始工具曾把完整檔案 read 誤判為部分 view 而拒絕 overwrite，因此改用具目標字串的 patch；該工具失敗與一次缺測試方法的 loader error 不算 RED。正式切片均重新得到預期 assertion failure 後才實作。
 
-最後一次提議的額外強化（參數錯誤隱私、audit 細分錯誤代碼、output polarity 極端型別）遇到「未取得同意、不可重試」的工具阻擋，**沒有執行、沒有繞過**，不在上述完成數內。
+後續再完成 3 項強化測試：未知命令列參數不回顯、極大整數讀值拒絕，以及 API 布林輸出狀態保存，因此目前總數為 24 項。Audit 細分錯誤代碼仍屬未完成項目。
 
 ## 最終真實執行
 
 命令：`python -m unittest discover -s tests -v`
 
-實際回傳：`Ran 21 tests in 1.141s`，`OK`，exit code 0。
+最新實際回傳：`Ran 24 tests`，`OK`，exit code 0。
 
 - `simulate --fixture fixtures/offline-test.json`：ready，2 個離線計畫，0 個執行；明確標示 synthetic TEST，不是 Pi 現在資料。
 - `replay --report fixtures/recorded-report.json --config config.example.json`：unconfigured，5 個讀值保留原始時間，0 個計畫、0 個執行。
@@ -42,4 +42,4 @@
 - `config.example.json` 與程式 default_config 完全相同；上游 MIT license 內容相同；SKILL 起始 frontmatter、description 長度與句點確認通過。
 - TLS／HTTP 成功現場連線未測試；client 單元測試沒有發網路請求。
 
-已知缺口見 README 與 future-control-checklist；不能把 21 個測試通過解讀為可用於實體自動控制。
+已知缺口見 README 與 future-control-checklist；不能把 24 個測試通過解讀為可用於實體自動控制。

@@ -63,7 +63,7 @@ terminal(command="python -m mycodo_scd41 read --url https://your-pi.example --ca
 
 ## Pitfalls
 
-- 種類「袖珍菇／秀珍菇」尚未向供應商確認。禁止引用上游 Lion's Mane／oyster 門檻替代。
+- 本研究菇種統一為秀珍菇；公開 dry-run 設定仍要求參數來源與人工核准。禁止引用上游 Lion's Mane／oyster 門檻替代。
 - A 箱只有 SCD41；無 SHT45、相機、多工器、繼電器或水位感測器。B 箱完全被動且人工紀錄。
 - SCD41 已有 4.0 溫度偏移、self calibration false；不要變更或再扣偏移。
 - 600 秒僅 API 查詢回溯範圍，不是安全 stale 設定。null freshness 阻擋計畫，但仍展示讀值。
