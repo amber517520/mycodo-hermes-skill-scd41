@@ -1,0 +1,69 @@
+{
+  "policy_version": "user_control_rules_v3",
+  "status": "saved_specification_only_no_actuation",
+  "device_control_enabled": false,
+  "scope": "A_box_only",
+  "environment_reference": {
+    "temperature_c": [22, 28],
+    "rh_percent": [85, 90],
+    "co2_target_below_ppm": 1000
+  },
+  "fan": {
+    "trigger": {"measurement": "co2_ppm", "operator": ">=", "value": 1000, "consecutive_valid_new_samples": 3},
+    "prewarning_enabled": false,
+    "run_minutes": 3,
+    "stop": "local_hard_timeout_required_not_verified",
+    "cooldown_minutes": 5,
+    "cooldown_starts_at": "confirmed_off_time",
+    "recheck": "use_fresh_data_after_cooldown",
+    "if_still_high": "repeat_if_fewer_than_3_failed_cycles_otherwise_lockout_and_notify_within_window",
+    "automatic_repeat": true,
+    "max_cycles_per_episode": 3,
+    "failure_count_basis": "failed_post_cycle_recheck",
+    "initial_trigger_samples_count_as_failed_cycles": false,
+    "on_compliant_post_cycle_recheck": "end_episode_and_reset_failure_count",
+    "invalid_or_missing_post_cycle_data": "do_not_increment_failure_count_and_do_not_restart",
+    "stop_and_lockout_after_limit": true,
+    "manual_reset_required_after_limit": true
+  },
+  "humidifier": {
+    "trigger": {"measurement": "rh_percent", "operator": "<", "value": 80, "consecutive_valid_new_samples": 3},
+    "run_minutes": 3,
+    "stop": "local_hard_timeout_required_not_verified",
+    "cooldown_minutes": 5,
+    "cooldown_starts_at": "confirmed_off_time",
+    "recheck": "use_fresh_data_after_cooldown",
+    "if_still_below_80": "repeat_if_fewer_than_3_failed_cycles_otherwise_lockout_and_notify_within_window",
+    "additional_humidification_block_conditions": ["rh_percent >= 90", "obvious_water_droplets_reported", "standing_water_reported"],
+    "on_block": "do_not_add_humidification_and_request_manual_inspection_via_telegram_if_within_window",
+    "water_droplets_and_standing_water_detection": "manual_report_only_no_camera_or_sensor_verified",
+    "automatic_repeat": true,
+    "max_cycles_per_episode": 3,
+    "failure_count_basis": "failed_post_cycle_recheck",
+    "initial_trigger_samples_count_as_failed_cycles": false,
+    "on_compliant_post_cycle_recheck": "end_episode_and_reset_failure_count",
+    "invalid_or_missing_post_cycle_data": "do_not_increment_failure_count_and_do_not_restart",
+    "stop_and_lockout_after_limit": true,
+    "manual_reset_required_after_limit": true,
+    "dry_run_protection_required_not_verified": true
+  },
+  "notifications": {
+    "requested_channel": "telegram",
+    "enabled": false,
+    "recipient": null,
+    "timezone": "Asia/Taipei",
+    "allowed_start_inclusive": "09:00",
+    "allowed_end_exclusive": "21:00",
+    "applies_to": "all_monitor_notifications",
+    "outside_window": "log_only_no_send_no_queued_catchup",
+    "outside_window_cycle_limit": "still_stop_and_lockout_at_3_failed_cycles_without_sending",
+    "delivery_status": "not_connected_not_tested"
+  },
+  "safety": {
+    "max_data_age_seconds": 180,
+    "missing_invalid_future_data": "no_start_candidate",
+    "unique_timestamps_required": true,
+    "concurrent_device_operation": "not_enabled",
+    "hardware_control_and_telegram_require_separate_deployment_and_verification": true
+  }
+}
