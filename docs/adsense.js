@@ -86,33 +86,28 @@
     const button = document.getElementById('privacyChoices');
     const message = document.getElementById('privacyChoicesStatus');
     if (!controls || !button || !message) return;
-    controls.hidden = false;
-    const fc = window.googlefc = window.googlefc || {};
-    fc.callbackQueue = fc.callbackQueue || [];
-    button.addEventListener('click', async () => {
+    window.googlefc = window.googlefc || {};
+    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+    // Follow Google's official conditional revocation-link example. Keep the
+    // entrypoint hidden until the actual CMP API confirms GDPR applies.
+    window.googlefc.callbackQueue.push({CONSENT_API_READY: () => {
+      if (blockedReason() || typeof window.__tcfapi !== 'function') return;
+      window.__tcfapi('addEventListener', 0, (data, success) => {
+        controls.hidden = Boolean(blockedReason()) || !success || !data || !data.gdprApplies;
+      });
+    }});
+    button.addEventListener('click', () => {
       if (blockedReason()) { controls.hidden = true; return; }
-      button.disabled = true;
-      message.textContent = '正在開啟隱私選項…';
-      let done = false;
-      const finish = text => {
-        if (done) return;
-        done = true;
-        clearTimeout(timeout);
-        button.disabled = false;
-        message.textContent = text;
-      };
-      const timeout = setTimeout(() => finish('目前無法開啟；請稍後再試，或查看隱私權與廣告說明。'), 16000);
-      fc.callbackQueue.push({CONSENT_API_READY: () => {
-        if (done || blockedReason()) return;
+      // Resolve the live namespace, not the pre-bootstrap object Google may replace.
+      window.googlefc.callbackQueue.push({CONSENT_API_READY: () => {
+        if (blockedReason()) return;
         try {
-          fc.showRevocationMessage();
-          finish('若有適用於你的隱私同意訊息，會在此開啟供你重新選擇。');
+          window.googlefc.showRevocationMessage();
+          message.textContent = '';
         } catch (_) {
-          finish('目前無法開啟；請稍後再試，或查看隱私權與廣告說明。');
+          message.textContent = '目前無法開啟；請稍後再試，或查看隱私權與廣告說明。';
         }
       }});
-      try { await loadLibrary(); }
-      catch (_) { finish('目前無法載入；請檢查網路或瀏覽器的內容封鎖設定。'); }
     });
   }
   async function request(unit) {
