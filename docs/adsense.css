@@ -1,0 +1,80 @@
+/* Load AFTER the existing site's style block. Scoped to manual-ad wrappers only. */
+/* Privacy entrypoint follows the same presentation exclusions as ads. */
+.privacy-controls[hidden], .judge-mode .privacy-controls { display:none!important; }
+@media print { .privacy-controls { display:none!important; } }
+
+.ad-slot.mushroom-ad {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  float: none;
+  clear: both;
+  /* Separate from research/photos by >=48px; prevent collapsing margins. */
+  margin: 56px auto;
+  padding: 48px 0;
+  width: calc(100% - 160px);
+  max-width: 970px;
+  min-height: 448px;
+  border: 0;
+  border-top: 1px solid #c7cbc7;
+  border-bottom: 1px solid #c7cbc7;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fffdf7;
+  color: #59645f;
+  text-align: center;
+  transform: none;
+  isolation: isolate;
+  /* No overlay, clipping, pointer-events tricks, or placement on content. */
+}
+.ad-slot.mushroom-ad .mushroom-ad__label {
+  display: block;
+  margin: 0 0 12px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: #59645f;
+}
+.ad-slot.mushroom-ad .mushroom-ad__body {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  margin: 0;
+  padding: 0;
+}
+.ad-slot.mushroom-ad ins.adsbygoogle {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  text-decoration: none;
+}
+/* Do not collapse reserved space on no-fill or script failure. */
+html[data-mushroom-ads-disabled] .ad-slot.mushroom-ad,
+html[data-mushroom-ads-printing="1"] .ad-slot.mushroom-ad,
+body.judge-mode .ad-slot.mushroom-ad,
+.ad-slot.mushroom-ad[hidden] {
+  display: none !important;
+}
+@media (max-width: 680px) {
+  .ad-slot.mushroom-ad {
+    /* Keep >=80px on the right, away from the existing floating back-top control. */
+    width: calc(100% - 104px);
+    margin-left: 24px;
+    margin-right: 80px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .ad-slot.mushroom-ad[data-mushroom-ad="7594014909"] {
+    display: none !important;
+  }
+}
+/* Too narrow to fit a 250px ad plus safe control clearance: fail closed. */
+@media (max-width: 353px) {
+  .ad-slot.mushroom-ad { display: none !important; }
+}
+@media print {
+  .ad-slot.mushroom-ad { display: none !important; }
+}
